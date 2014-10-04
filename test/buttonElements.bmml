@@ -1,0 +1,77 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1078" measuredH="429" mockupW="1037" mockupH="388">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::Button" x="42" y="43" w="-1" h="-1" measuredW="61" measuredH="27" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Button</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::CheckBox" x="361" y="41" w="-1" h="-1" measuredW="78" measuredH="22" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Checkbox</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::RadioButton" x="361" y="122" w="-1" h="-1" measuredW="92" measuredH="22" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Radio%20Button</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::RadioButtonGroup" x="362" y="248" w="-1" h="-1" measuredW="165" measuredH="181" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%28o%29%20option%201%20%28selected%29%0A%28%20%29%20option%202%0A%28-%29%20option%203%20%28indeterminate%29%0A-%28%20%29%20option%204%20%28disabled%29-%0A-%28o%29%20option%205%5Cr%28disabled%20and%20selected%29-%0A-%28-%29%20option%206%5Cr%28disabled%20indeterminate%29-%0AA%20row%20without%20a%20radio%20button</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::PointyButton" x="42" y="280" w="-1" h="-1" measuredW="69" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <direction>left</direction>
+        <newLayout>true</newLayout>
+        <text>Button</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::ButtonBar" x="42" y="124" w="-1" h="-1" measuredW="156" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>One%2C%20Two%2C%20Three</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::ComboBox" x="42" y="203" w="-1" h="-1" measuredW="93" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>ComboBox</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::ColorPicker" x="640" y="41" w="-1" h="-1" measuredW="26" measuredH="28" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::DateChooser" x="640" y="199" w="-1" h="-1" measuredW="90" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%20%20/%20%20/%20%20%20%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::HelpButton" x="640" y="280" w="-1" h="-1" measuredW="18" measuredH="18" zOrder="9" locked="false" isInGroup="-1"/>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::MultilineButton" x="41" y="357" w="-1" h="-1" measuredW="139" measuredH="66" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Multiline%20Button%0ASecond%20line%20of%20text</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::NumericStepper" x="642" y="123" w="-1" h="-1" measuredW="41" measuredH="24" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>3</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Switch" x="962" y="42" w="-1" h="-1" measuredW="49" measuredH="28" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::MediaControls" x="968" y="124" w="-1" h="-1" measuredW="110" measuredH="36" zOrder="13" locked="false" isInGroup="-1"/>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::PointyButton" x="125" y="280" w="-1" h="-1" measuredW="59" measuredH="27" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <direction>center</direction>
+        <newLayout>true</newLayout>
+        <text>Button</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::PointyButton" x="202" y="280" w="-1" h="-1" measuredW="69" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <direction>right</direction>
+        <newLayout>true</newLayout>
+        <text>Button</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
