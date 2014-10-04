@@ -1,0 +1,26 @@
+* {
+	position: absolute;
+}
+
+h1 {
+	color: red;
+}
+
+.title {
+	margin: 0;
+	white-space: nowrap;
+}
+
+.button {
+	white-space: nowrap;
+}
+
+.icon {
+	border: 1px solid black;
+	overflow: hidden;
+	background-color: green;
+}
+
+.unknown {
+	border: 1px solid grey;
+}
