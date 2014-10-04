@@ -1,9 +1,10 @@
 var fs = require('fs'),
   parser = require('xml2json'),
   _ = require('underscore'),
-  argv = require('minimist')(process.argv.slice(2));
+  argv = require('minimist')(process.argv.slice(2)),
+  createElement = require('create-element');
 
-var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
+fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
 
   if (err) {
     return console.log(err);
@@ -14,27 +15,41 @@ var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
 
   var html = "";
 
-  var groupTest = function (value) {
+  html += '<!DOCTYPE html><html><head>' +
+            '<title>' + argv.file + '</title>' +
+            '<link rel="stylesheet" type="text/css" href="style.css">' +
+            '</head><body>';
+
+  var groupTest = function (value, groupTopPos, groupLeftPos) {
     if (value.controlTypeID !== "__group__") {
       return;
     };
-
-    var minx = value.x;
-    var miny = value.y;
 
     _.each(value.groupChildrenDescriptors.control, function (value, key, list) {
       console.log("    " + value.controlTypeID);
 
       if (value.controlTypeID === 'com.balsamiq.mockups::Title') {
-          html = html + '<h2 style="' +
-              'position: absolute; ' +
-              'top: ' + (miny + value.y) + '; ' +
-              'left: ' + (minx + value.x) + '; ' +
-              'color: red;' +
-              '">' +
-              value.controlProperties.text +
-              '</h2>';
+          
+        html += createElement(
+                  'h1', {
+                    style: [
+                      'top: ' + (groupTopPos + value.y) + 'px;',
+                      'left: ' + (groupLeftPos + value.x) + 'px;',
+                      'z-index: ' + value.zOrder + ';'
+                    ],
+                    class: 'title'  
+                  },
+                  decodeURI(value.controlProperties.text)
+                );
+      } else {
+        console.warn(
+        'WARN Group Item: ' +
+        'ID: ' + value.controlID + ', ' +
+        'Type: ' + value.controlTypeID + ', '
+        );
       };
+
+      groupTest(value, groupTopPos, groupLeftPos);
     });
   };
 
@@ -63,63 +78,79 @@ var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
     leftPos = value.x - viewLeftPos;
 
 
-      if (value.controlTypeID ===  'com.balsamiq.mockups::Button') {
-        html = html + '<button style="' +
-            'position: absolute; ' +
-            'top: ' + topPos + '; ' +
-            'left: ' + leftPos + '; ' +
-            '">' +
-            value.controlProperties.text +
-            '</button>';
+    if (value.controlTypeID ===  'com.balsamiq.mockups::Button') {
 
-      } else if (value.controlTypeID === 'com.balsamiq.mockups::Title') {
-          html = html + '<h2 style="' +
-              'position: absolute; ' +
-              'top: ' + topPos + '; ' +
-              'left: ' + leftPos + '; ' +
-              'color: red;' +
-              '">' +
-              value.controlProperties.text +
-              '</h2>';
-
-      } else if (value.controlTypeID === 'com.balsamiq.mockups::Icon') {
-          html = html + '<div style ="' +
-            'border: 1px solid black; ' +
-            'position: absolute; ' +
-            'overflow: hidden; ' +
-            'top: ' + topPos + '; ' +
-            'left: ' + leftPos + '; ' +
-            'height: ' + value.measuredH + '; ' +
-            'width: ' + value.measuredW + '; ' +
-            'background-color: green' +
-            '">' +
-            value.controlProperties.icon +
-            '</div>';
-
-      } else {
-        // unhandled case
-        console.warn(
-          'WARN: ' +
-          'ID: ' + value.controlID + ', ' +
-          'Type: ' + value.controlTypeID + ', ' +
-          'Symbol: ' + symbol
+      html += createElement(
+          'button', {
+            style: [
+              'top: ' + topPos + 'px;',
+              'left: ' + leftPos + 'px;',
+              'z-index: ' + value.zOrder + ';'
+            ],
+            class: 'button'
+          },
+          decodeURI(value.controlProperties.text)
         );
 
-        html = html + '<div style="' +
-            'border: 1px solid black; ' +
-            'position: absolute; ' +
-            'top: ' + topPos + '; ' +
-            'left: ' + leftPos + '; ' +
-            'height: ' + value.h + '; ' +
-            'width: ' + value.w + '; ' +
-            '">' +
-            value.controlTypeID +
-            '</div>';
-      };
+    } else if (value.controlTypeID === 'com.balsamiq.mockups::Title') {
 
-      groupTest(value);
+      html += createElement(
+          'h1', {
+            style: [
+              'top: ' + topPos + 'px;',
+              'left: ' + leftPos + 'px;',
+              'z-index: ' + value.zOrder + ';'
+            ],
+            class: 'title'  
+          },
+          decodeURI(value.controlProperties.text)
+        );
+
+    } else if (value.controlTypeID === 'com.balsamiq.mockups::Icon') {
+
+      html += createElement(
+        'div', {
+          style: [
+            'top: ' + topPos + 'px;',
+            'left: ' + leftPos + 'px;',
+            'z-index: ' + value.zOrder + ';',
+            'height: ' + value.measuredH + 'px;',
+            'width: ' + value.measuredW + 'px;'
+          ],
+          class: 'icon'  
+        },
+        decodeURI(value.controlProperties.icon)
+      );
+
+    } else {
+      // Unknown element type
+      console.warn(
+        'WARN: ' +
+        'ID: ' + value.controlID + ', ' +
+        'Type: ' + value.controlTypeID + ', ' +
+        'Symbol: ' + symbol
+      );
+
+      html += createElement(
+          'div', {
+            style: [
+              'top: ' + topPos + 'px;',
+              'left: ' + leftPos + 'px;',
+              'height: ' + value.h + 'px; ',
+              'width: ' + value.w + 'px; ',
+              'z-index: ' + value.zOrder + ';'
+            ],
+            class: 'unknown'  
+          },
+          value.controlTypeID
+        );
+    };
+
+    groupTest(value, topPos, leftPos);
   });
   
+  html += '</body></html>';
+
   // Write json as output if required:
   // var prettyjson = JSON.stringify(jsobject, null, 2);
   // fs.writeFile('output/json/' + argv.file + '.json', prettyjson);
