@@ -105,16 +105,10 @@ var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
 
       groupTest(value);
   });
-    //console.log(jsobject.mockup.controls);
-  var prettyjson = JSON.stringify(jsobject, null, 2);
   
-  // Write json as output if required
+  // Write json as output if required:
+  // var prettyjson = JSON.stringify(jsobject, null, 2);
   // fs.writeFile('output/json/' + argv.file + '.json', prettyjson);
-  
-  mkdirp('/output/html', function (err) {
-    if (err) console.error(err)
-    else console.log('pow!')
-  });
-  
+
   fs.writeFile('output/html/' + argv.file + '.html', html);
 });
