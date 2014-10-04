@@ -1,8 +1,7 @@
 var fs = require('fs'),
   parser = require('xml2json'),
   _ = require('underscore'),
-  argv = require('minimist')(process.argv.slice(2)),
-  mkdirp = require('mkdirp');
+  argv = require('minimist')(process.argv.slice(2));
 
 var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
 
@@ -39,9 +38,20 @@ var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
     });
   };
 
+  /* 
+  * Balsamiq Mockups places all controls in an absolute position.
+  * Any difference between measuredHeight/Width is whitespace at the top left of the view.
+  */
+
+  var viewLeftPos = jsobject.mockup.measuredW - jsobject.mockup.mockupW - 1;
+  var viewTopPos = jsobject.mockup.measuredH - jsobject.mockup.mockupH - 1;
+
+  /* Now we iterate through the full list of controls */
   _.each(jsobject.mockup.controls.control, function(value, key, list) {
     
     var symbol = "";
+    var topPos;
+    var leftPos;
 
     if (value.controlProperties) {
       if (value.controlProperties.src) {
@@ -49,11 +59,15 @@ var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
       };
     };
 
+    topPos = value.y - viewTopPos;
+    leftPos = value.x - viewLeftPos;
+
+
       if (value.controlTypeID ===  'com.balsamiq.mockups::Button') {
         html = html + '<button style="' +
             'position: absolute; ' +
-            'top: ' + value.y + '; ' +
-            'left: ' + value.x + '; ' +
+            'top: ' + topPos + '; ' +
+            'left: ' + leftPos + '; ' +
             '">' +
             value.controlProperties.text +
             '</button>';
@@ -61,8 +75,8 @@ var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
       } else if (value.controlTypeID === 'com.balsamiq.mockups::Title') {
           html = html + '<h2 style="' +
               'position: absolute; ' +
-              'top: ' + value.y + '; ' +
-              'left: ' + value.x + '; ' +
+              'top: ' + topPos + '; ' +
+              'left: ' + leftPos + '; ' +
               'color: red;' +
               '">' +
               value.controlProperties.text +
@@ -73,8 +87,8 @@ var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
             'border: 1px solid black; ' +
             'position: absolute; ' +
             'overflow: hidden; ' +
-            'top: ' + value.y + '; ' +
-            'left: ' + value.x + '; ' +
+            'top: ' + topPos + '; ' +
+            'left: ' + leftPos + '; ' +
             'height: ' + value.measuredH + '; ' +
             'width: ' + value.measuredW + '; ' +
             'background-color: green' +
@@ -94,8 +108,8 @@ var xml = fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
         html = html + '<div style="' +
             'border: 1px solid black; ' +
             'position: absolute; ' +
-            'top: ' + value.y + '; ' +
-            'left: ' + value.x + '; ' +
+            'top: ' + topPos + '; ' +
+            'left: ' + leftPos + '; ' +
             'height: ' + value.h + '; ' +
             'width: ' + value.w + '; ' +
             '">' +
