@@ -4,7 +4,9 @@ var fs = require('fs'),
   argv = require('minimist')(process.argv.slice(2)),
   createElement = require('create-element');
 
-fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
+var fileName = argv.file.split('/').pop().slice(0,-5);
+
+fs.readFile(argv.file, 'utf8', function (err,data) {
 
   if (err) {
     return console.log(err);
@@ -16,7 +18,7 @@ fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
   var html = "";
 
   html += '<!DOCTYPE html><html><head>' +
-            '<title>' + argv.file + '</title>' +
+            '<title>' + fileName + '</title>' +
             '<link rel="stylesheet" type="text/css" href="style.css">' +
             '</head><body>';
 
@@ -136,9 +138,9 @@ fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
         'left: ' + leftPos + 'px;' +
         'z-index: ' + value.zOrder + ';' +
         'line-height: ' + value.controlProperties.rowHeight + 'px;' +
-      '"><tbody>';
+      '" class="table"><tbody>';
 
-      _.each(dataGridContent, function(dataGridContentRow) {
+      _.each(dataGridContent, function(dataGridContentRow, index) {
 
         html += '<tr>';
 
@@ -191,5 +193,5 @@ fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
   // var prettyjson = JSON.stringify(jsobject, null, 2);
   // fs.writeFile('output/json/' + argv.file + '.json', prettyjson);
 
-  fs.writeFile('output/html/' + argv.file + '.html', html);
+  fs.writeFile('output/html/' + fileName + '.html', html);
 });

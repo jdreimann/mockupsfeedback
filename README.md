@@ -1,8 +1,8 @@
 # Mockups Feedback
 
 Run like this:
-node generateHTML --file filename
+`node generateHTML.js --file /foo/mockup.bmml`
 
-Filename will be assumed to be a .bmml file. Can also be the path to the file.
+File needs to be a .bmml file. Can also be the path to the file. Relative and absolute locations are all valid.
 
 Output is placed in the output/html folder.
