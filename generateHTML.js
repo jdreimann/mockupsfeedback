@@ -122,6 +122,42 @@ fs.readFile(argv.file + '.bmml', 'utf8', function (err,data) {
         decodeURI(value.controlProperties.icon)
       );
 
+    } else if (value.controlTypeID === 'com.balsamiq.mockups::DataGrid') {
+      
+      var dataGridContent = decodeURI(value.controlProperties.text).split('\n');
+
+      for (var i = dataGridContent.length - 1; i >= 0; i--) {
+        dataGridContent[i] = dataGridContent[i].replace(/%3A/g, ':');
+        dataGridContent[i] = dataGridContent[i].split('%2C');
+      };
+
+      html += '<table style="' +
+        'top: ' + topPos + 'px;' +
+        'left: ' + leftPos + 'px;' +
+        'z-index: ' + value.zOrder + ';' +
+        'line-height: ' + value.controlProperties.rowHeight + 'px;' +
+      '"><tbody>';
+
+      _.each(dataGridContent, function(dataGridContentRow) {
+
+        html += '<tr>';
+
+        _.each(dataGridContentRow, function(dataGridContentColumn) {
+
+          if (dataGridContentColumn === '[]') {
+            return html += '<td><input type="checkbox"></td>';
+          };
+
+          html += '<td>' + dataGridContentColumn + '</td>';
+        });
+
+        html += '</tr>';
+
+      });
+
+      html += '</tbody></table>';
+
+      // console.log(dataGridContent);
     } else {
       // Unknown element type
       console.warn(

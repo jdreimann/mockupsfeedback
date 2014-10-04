@@ -1,4 +1,7 @@
 * {
+}
+
+h1, div, table, .button, .icon, .unknown  {
 	position: absolute;
 }
 
