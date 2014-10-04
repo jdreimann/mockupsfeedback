@@ -4,11 +4,12 @@
   "description": "Get quick feedback for your mockups",
   "main": "generateHTML.js",
   "dependencies": {
+    "create-element": "^0.2.3",
+    "json-prettify": "^1.2.0",
     "minimist": "^1.1.0",
     "mkdirp": "^0.5.0",
     "underscore": "^1.7.0",
-    "xml2json": "^0.5.1",
-    "json-prettify": "^1.2.0"
+    "xml2json": "^0.5.1"
   },
   "devDependencies": {},
   "scripts": {
