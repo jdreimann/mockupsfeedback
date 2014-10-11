@@ -1,0 +1,31 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1427" measuredH="1618" mockupW="1385" mockupH="1577">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::Alert" x="48" y="48" w="-1" h="-1" measuredW="200" measuredH="117" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Alert%0AAlert%20text%20goes%20here%0ANo%2C%20Yes</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::iPhoneKeyboard" x="42" y="280" w="-1" h="-1" measuredW="226" measuredH="160" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::iPhonePicker" x="43" y="519" w="-1" h="-1" measuredW="214" measuredH="160" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>7%2C59%0A8%2C00%0A9%2C01%2C%20AM%0A10%2C02%2C%20PM%0A11%2C03%0A12%2C04%0A1%2C05</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::iPhoneMenu" x="403" y="41" w="-1" h="-1" measuredW="215" measuredH="383" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Simple%20Label%0A+%20Add%20and%20sub-menu%2C%20%3E%0A-%20Delete%5Cr%28Cancel%29%0ATwo%20Labels%5C%2C%20and%20a%20comma%2C%20yup%0Av%20A%20Checkmark%2C%20%28%3E%29%0A*%20A%20Bullet%2C%20%3D%0A_%20Space%20for%20an%20icon%0A__%20Space%20for%20a%20big%20icon%0AOn%20button%2C%20ON%0AOff%20button%2C%20OFF%0A%20%0Av%20An%20empty%20row%2C%20%28above%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::iPhone" x="811" y="46" w="-1" h="-1" measuredW="282" measuredH="573" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <model>IPhone5</model>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::iPad" x="811" y="702" w="-1" h="-1" measuredW="616" measuredH="916" zOrder="5" locked="false" isInGroup="-1"/>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::iPadPopover" x="400" y="519" w="-1" h="-1" measuredW="222" measuredH="187" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
